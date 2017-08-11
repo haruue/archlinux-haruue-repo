@@ -1,0 +1,7 @@
+/*/.git
+/*/src
+/*/pkg
+*.pkg.tar.xz
+*.src.tar.xz
+*.sig
+.SRCINFO
