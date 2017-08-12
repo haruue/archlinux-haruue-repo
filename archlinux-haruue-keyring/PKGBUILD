@@ -1,5 +1,5 @@
 # Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
-# this package is as a auto key renew tool for archlinux-haruue
+# This package is as a auto keyring renew tool for archlinux-haruue
 
 pkgname='archlinux-haruue-keyring'
 pkgver=20170720
