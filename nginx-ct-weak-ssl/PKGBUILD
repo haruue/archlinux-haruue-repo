@@ -34,7 +34,7 @@ source=($url/download/nginx-$_nginx_ver.tar.gz
         service
         logrotate
         "https://www.openssl.org/source/openssl-$_openssl_ver.tar.gz"
-        "https://github.com/grahamedgecombe/nginx-ct/archive/v$_ct_ver.tar.gz")
+        "nginx-ct-$_ct_ver.tar.gz"::"https://github.com/grahamedgecombe/nginx-ct/archive/v$_ct_ver.tar.gz")
 #validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'

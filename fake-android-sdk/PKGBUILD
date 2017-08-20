@@ -1,0 +1,27 @@
+# Maintainer:  Haruue Icymoon <haruue@caoyue.com.cn>
+
+pkgname='fake-android-sdk'
+pkgver='1'
+pkgrel='1'
+pkgdesc='EMPTY package stub for android packages which can be managed by Android Studio, to satisfy dependencies only. This package is EMPTY and do NOT provide any binaries, you can install it if you do not want to manager android sdk by pacman'
+arch=('any')
+url='https://developer.android.com/studio/releases/sdk-tools.html'
+license=('GPL')
+depends=('')
+provides=(
+  'android-platform=*'
+  'android-sdk=*'
+  'android-support=*'
+  'android-ndk=*'
+  'android-emulator=*'
+  'android-tools=*'
+  'android-docs=*'
+  'android-sdk-build-tools=*'
+  'android-sdk-platform-tools=*'
+  'android-studio=*'
+)
+
+package() {
+  true # do nothing
+}
+
