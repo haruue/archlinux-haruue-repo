@@ -2,7 +2,7 @@
 # This package is as a auto keyring renew tool for archlinux-haruue
 
 pkgname='archlinux-haruue-keyring'
-pkgver=20170720
+pkgver=20170821
 pkgrel=1
 pkgdesc="Haruue's Arch Linux Unoffical Repo PGP keyring"
 arch=('any')
@@ -11,13 +11,11 @@ license=('GPL')
 depends=('')
 install="$pkgname.install"
 source=(
-	"${pkgname%-keyring}.gpg"
 	"${pkgname%-keyring}-revoked"
 	"${pkgname%-keyring}-trusted"
 )
 
-sha512sums=('a6dfaa7a98f7f8d56c4b5e82c8c375fe025ca231f534856a91a5ba8cb9c83924f00653db6e54cb04ab986f538b073620874f4d0f387fc055ff1a58f57bb64f69'
-            'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
+sha512sums=('cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
             '2a1097b3b1a7705967d556a2a5a5620c89a7057469b49e49ea263c2208a2b38ea8cd1ea3f62bfa1d1e8f09831d346e57e98912612728be4d8153d527d36e8da4')
 
 pkgver() {
@@ -25,7 +23,9 @@ pkgver() {
 }
 
 package() {
-  install -Dm644 "$srcdir/${pkgname%-keyring}.gpg" "$pkgdir/usr/share/pacman/keyrings/${pkgname%-keyring}.gpg"
+  mkdir -p "$pkgdir/usr/share/pacman/keyrings"
+
+  gpg --export '9CE1404C73077FD6C051DA16CC276FBC7F3A85BB' > "$pkgdir/usr/share/pacman/keyrings/${pkgname%-keyring}.gpg"
   install -Dm644 "$srcdir/${pkgname%-keyring}-revoked" "$pkgdir/usr/share/pacman/keyrings/${pkgname%-keyring}-revoked"
   install -Dm644 "$srcdir/${pkgname%-keyring}-trusted" "$pkgdir/usr/share/pacman/keyrings/${pkgname%-keyring}-trusted"
 }
