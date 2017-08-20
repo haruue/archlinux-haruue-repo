@@ -2,8 +2,8 @@
 
 pkgname='fake-android-sdk'
 pkgver='1'
-pkgrel='1'
-pkgdesc='EMPTY package stub for android packages which can be managed by Android Studio, to satisfy dependencies only. This package is EMPTY and do NOT provide any binaries, you can install it if you do not want to manager android sdk by pacman'
+pkgrel='2'
+pkgdesc='EMPTY package placeholder for android packages which can be managed by Android Studio, to satisfy dependencies only. This package is EMPTY and do NOT provides any binaries, you can install it if you do not want to manage android sdk with pacman'
 arch=('any')
 url='https://developer.android.com/studio/releases/sdk-tools.html'
 license=('GPL')
