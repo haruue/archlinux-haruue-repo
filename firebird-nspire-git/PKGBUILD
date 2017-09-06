@@ -1,7 +1,7 @@
 # Maintainer: Haruue Icymoon <haruue@caoyue.com.cn>
 
 pkgname=firebird-nspire-git
-pkgver=1.3.r99.g83116b6
+pkgver=1.3.r107.g6abe28d
 pkgrel=1
 pkgdesc='Community emulator of TI-Nspire calculators.'
 arch=('i686' 'x86_64')
