@@ -6,7 +6,7 @@
 pkgbase=linux-stable-bbr       # Build kernel with a different name
 _srcname=linux-4.13
 pkgver=4.13.2
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -53,9 +53,6 @@ prepare() {
 
   cp -Tf ../config.${CARCH} .config
 
-  # stable-bbr config
-  cat ../extra_config >> .config
-
   if [ "${_kernelname}" != "" ]; then
     sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
     sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|" ./.config
@@ -75,8 +72,11 @@ prepare() {
   #make menuconfig # CLI menu for configuration
   #make nconfig # new CLI menu for configuration
   #make xconfig # X-based configuration
-  #make oldconfig # using old config from previous kernel version
+  make oldconfig # using old config from previous kernel version
   # ... or manually edit .config
+
+  # stable-bbr config
+  cat ../extra_config >> .config
 
   # rewrite configuration
   yes "" | make config >/dev/null
