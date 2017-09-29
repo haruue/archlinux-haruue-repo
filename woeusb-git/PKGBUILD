@@ -1,6 +1,6 @@
 # Maintainer: Salvador Pardiñas <darkfm@vera.com.uy>
 pkgname=woeusb-git
-pkgver=r556.bbd9dbc
+pkgver=r566.0b3a920
 pkgrel=1
 pkgdesc="A Linux program to create Windows USB stick installer from a real Windows DVD or an image"
 arch=('x86_64')
