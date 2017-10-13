@@ -2,7 +2,7 @@
 pkgname=('waifu2x-converter-cpp-git')
 _srcname='waifu2x-converter-cpp'
 pkgdesc='Image Super-Resolution for Anime-Style Art'
-pkgver=r488.1505062703.1f12ef5
+pkgver=r503.1507194813.0fa5723
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/DeadSix27/${_srcname}"
