@@ -1,7 +1,7 @@
 post_install () {
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod 4.13.6-1-stable-bbr
+  depmod 4.13.7-1-stable-bbr
 }
 
 post_upgrade() {
@@ -11,7 +11,7 @@ post_upgrade() {
 
   # updating module dependencies
   echo ">>> Updating module dependencies. Please wait ..."
-  depmod 4.13.6-1-stable-bbr
+  depmod 4.13.7-1-stable-bbr
 
   if [ $(vercmp $2 3.13) -lt 0 ]; then
     echo ">>> WARNING: AT keyboard support is no longer built into the kernel."
