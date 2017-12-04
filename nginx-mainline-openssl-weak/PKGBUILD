@@ -4,19 +4,18 @@
 # Contributor: Sébastien Luttringer
 # Contributor: Drew DeVault
 
-pkgname=nginx-ct-weak-ssl
-pkgver=1.13.7+openssl_1.1.0g+nginxct_1.3.2
-pkgrel=2
-pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with nginx-ct module and weak openssl ciphers enabled'
+pkgname=nginx-mainline-openssl-weak
+pkgver=1.13.7+openssl_1.1.0g
+pkgrel=1
+pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with weak openssl ciphers enabled for IE8'
 arch=(x86_64)
 _basename=nginx
 _nginx_ver=1.13.7
 _openssl_ver="1.1.0g"
-_ct_ver=1.3.2
 url='https://nginx.org'
 license=(custom)
 depends=(pcre zlib openssl geoip mailcap)
-makedepends=(mercurial go)
+makedepends=(mercurial)
 backup=(etc/nginx/fastcgi.conf
         etc/nginx/fastcgi_params
         etc/nginx/koi-win
@@ -27,18 +26,16 @@ backup=(etc/nginx/fastcgi.conf
         etc/nginx/win-utf
         etc/logrotate.d/nginx)
 install=nginx.install
-provides=('nginx')
+provides=("nginx=$_nginx_ver")
 conflicts=('nginx')
 source=($url/download/nginx-$_nginx_ver.tar.gz
         service
         logrotate
-        "https://www.openssl.org/source/openssl-$_openssl_ver.tar.gz"
-        "nginx-ct-$_ct_ver.tar.gz"::"https://github.com/grahamedgecombe/nginx-ct/archive/v$_ct_ver.tar.gz")
+	"https://www.openssl.org/source/openssl-$_openssl_ver.tar.gz")
 #validpgpkeys=('B0F4253373F8F6F510D42178520A9993A1C052F8') # Maxim Dounin <mdounin@mdounin.ru>
 md5sums=('SKIP'
          'ef491e760e7c1ffec9ca25441a150c83'
          '6a01fb17af86f03707c8ae60f98a2dc2'
-         'SKIP'
          'SKIP')
 
 _common_flags=(
@@ -79,12 +76,8 @@ _openssl_flags=(
   --with-openssl-opt=enable-weak-ssl-ciphers
 )
 
-_ct_flags=(
-  --add-module="../nginx-ct-$_ct_ver"
-)
-
 pkgver() {
-    echo "$_nginx_ver+openssl_$_openssl_ver+nginxct_$_ct_ver"
+    echo "$_nginx_ver+openssl_$_openssl_ver"
 }
 
 build() {
@@ -108,8 +101,7 @@ build() {
     --with-ld-opt="$LDFLAGS" \
     ${_common_flags[@]} \
     ${_mainline_flags[@]} \
-    ${_openssl_flags[@]} \
-    ${_ct_flags[@]}
+    ${_openssl_flags[@]}
 
   make
 }
