@@ -5,6 +5,6 @@ post_upgrade() {
 }
 
 post_remove() {
-  rm -f boot/initramfs-%PKGBASE%.img
-  rm -f boot/initramfs-%PKGBASE%-fallback.img
+  rm -f boot/initramfs-linux-stable-bbr.img
+  rm -f boot/initramfs-linux-stable-bbr-fallback.img
 }
