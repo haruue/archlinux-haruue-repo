@@ -5,12 +5,12 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-mainline-openssl-weak
-pkgver=1.13.7+openssl_1.1.0g
+pkgver=1.13.8+openssl_1.1.0g
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with weak openssl ciphers enabled for IE8'
 arch=(x86_64)
 _basename=nginx
-_nginx_ver=1.13.7
+_nginx_ver=1.13.8
 _openssl_ver="1.1.0g"
 url='https://nginx.org'
 license=(custom)

@@ -3,9 +3,9 @@
 
 pkgname=nginx-mod-ct
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 
-_nginxver=1.13.7
+_nginxver=1.13.8
 
 pkgdesc='Nginx module that provides Certificate Transparency supports'
 arch=('x86_64')
