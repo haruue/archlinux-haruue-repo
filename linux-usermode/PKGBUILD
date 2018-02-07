@@ -2,8 +2,8 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.14
-pkgver=4.14.13
+_srcname=linux-4.15
+pkgver=4.15.1
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules, with tcp_bbr as default TCP congestion control"
 arch=('i686' 'x86_64')
@@ -32,12 +32,13 @@ prepare() {
   # https://patchwork.kernel.org/patch/10059117/
   patch -Np1 -i ../0001-ucontext-fix-incomplete-type-ucontext.patch
 
-  cp -Tf ../config .config
+  cat ../config - >.config <<END
+CONFIG_LOCALVERSION="${_kernelname}"
+CONFIG_LOCALVERSION_AUTO=n
+END
 
-  if [ "${_kernelname}" != "" ]; then
-    sed -i "s|CONFIG_LOCALVERSION=.*|CONFIG_LOCALVERSION=\"${_kernelname}\"|g" ./.config
-    sed -i "s|CONFIG_LOCALVERSION_AUTO=.*|CONFIG_LOCALVERSION_AUTO=n|g" ./.config
-  fi
+  # set extraversion to pkgrel
+  sed -i "/^EXTRAVERSION =/s/=.*/= -${pkgrel}/" Makefile
 
   # bbr config
   cat ../extra_config >> .config
