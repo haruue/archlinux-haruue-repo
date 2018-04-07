@@ -1,0 +1,24 @@
+# Maintainer: Haruue Icymoon <i@haruue.moe>
+
+pkgname=numlock
+pkgver=1
+pkgrel=1
+pkgdesc="automatically activate numpad on ttys"
+groups=('base')
+arch=('any')
+url="https://wiki.archlinux.org/index.php/Activating_Numlock_on_Bootup#Using_a_separate_service"
+depends=('systemd' 'kbd' 'bash')
+provides=('numlockontty' 'systemd-numlockontty')
+license=('GFDL')
+
+source=('numlock'
+        'numlock.service')
+md5sums=('333ae856c5343449c76c253ef14a1460'
+         '73728dd078d2ac59ba2806110f3961da')
+
+package() {
+  install -Dvm755 "$srcdir/numlock"		 "$pkgdir/usr/bin/numlock"
+  install -Dvm644 "$srcdir/numlock.service"	 "$pkgdir/usr/lib/systemd/system/numlock.service"
+}
+
+# vim:set ts=8 sts=2 sw=2 et:
