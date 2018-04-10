@@ -13,3 +13,5 @@ CONFIG_EXPERT=y
 # disable intel iommu 
 CONFIG_INTEL_IOMMU_DEFAULT_ON=n
 
+# enable magic sysrq by default
+CONFIG_MAGIC_SYSRQ_DEFAULT_ENABLE=0x1

@@ -2,9 +2,9 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.15
-pkgver=4.15.14
-pkgrel=1
+_srcname=linux-4.16
+pkgver=4.16
+pkgrel=3
 pkgdesc="User mode Linux kernel and modules, with tcp_bbr as default TCP congestion control"
 arch=('i686' 'x86_64')
 license=('GPL2')
@@ -12,13 +12,13 @@ url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
 makedepends=('bc' 'inetutils')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
+	#"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config
 	0001-ucontext-fix-incomplete-type-ucontext.patch
 	extra_config)
 sha256sums=('SKIP'
-            'SKIP'
-            '82e4eed835e358847495e40baba1ba9092b7301424daefcdf00a9089beddd2a6'
+            #'SKIP'
+            '7a0a2c3f46da6f864cf1b1b5f074fe08ead8bb6bb7e0a5615269c3b9e0c2f552'
             '9a7e0a9a2c3d4252cee29b4f5f61da00e98bd247cb5ceb22e31a7f782a45bddf'
             'SKIP')
 
@@ -26,7 +26,7 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # add upstream patch
-  patch -p1 -i "${srcdir}/patch-${pkgver}"
+  #patch -p1 -i "${srcdir}/patch-${pkgver}"
 
   # workground for glibc 2.26+
   # https://patchwork.kernel.org/patch/10059117/
@@ -65,11 +65,15 @@ package_linux-usermode-modules() {
   install=modules.install
 
   cd "${srcdir}/${_srcname}"
+
+  # get kernel version
+  _kernver="$(make ARCH=um kernelrelease)"
+
 #  make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
   make ARCH=um INSTALL_MOD_PATH="${pkgdir}/usr" _modinst_
-  rm -f $pkgdir/usr/lib/modules/${pkgver}${_kernelname}/{source,build}
+  rm -f $pkgdir/usr/lib/modules/${pkgver}-${pkgrel}${_kernelname}/{source,build}
   sed \
-    -e  "s/KERNEL_VERSION=.*/KERNEL_VERSION=$pkgver${_kernelname}/g" \
+    -e "s/KERNEL_VERSION=.*/KERNEL_VERSION=${_kernver}/g" \
     -i "${startdir}/modules.install"
 }
 
