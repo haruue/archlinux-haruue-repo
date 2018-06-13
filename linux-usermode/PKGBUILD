@@ -5,15 +5,15 @@ pkgname=linux-usermode
 true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
-_srcname=linux-4.16
-pkgver=4.16.12
+_srcname=linux-4.17
+pkgver=4.17.1
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules, with tcp_bbr as default TCP congestion control"
 arch=('x86_64')
 license=('GPL2')
 url="http://user-mode-linux.sourceforge.net/"
 depends=('coreutils')
-makedepends=('bc' 'inetutils' 'gcc6')
+makedepends=('bc' 'inetutils' 'gcc7')
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config
@@ -48,7 +48,7 @@ build() {
   cd "${srcdir}/${_srcname}"
   unset LDFLAGS CFLAGS
 
-  make ARCH=um CC=gcc-6 vmlinux modules 
+  make ARCH=um CC=gcc-7 vmlinux modules 
 }
 
 package_linux-usermode() {
