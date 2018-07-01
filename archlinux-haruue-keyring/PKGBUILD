@@ -2,7 +2,7 @@
 # This package is as a auto keyring renew tool for archlinux-haruue
 
 pkgname='archlinux-haruue-keyring'
-pkgver=20180604
+pkgver=20180701
 pkgrel=1
 pkgdesc="Haruue's Arch Linux Unoffical Repo PGP keyring"
 arch=('any')
