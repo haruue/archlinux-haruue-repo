@@ -6,7 +6,7 @@ true && pkgname=(linux-usermode linux-usermode-modules)
 pkgbase=linux-usermode
 _kernelname=-usermodelinux
 _srcname=linux-4.17
-pkgver=4.17.5
+pkgver=4.17.9
 pkgrel=1
 pkgdesc="User mode Linux kernel and modules, with tcp_bbr as default TCP congestion control"
 arch=('x86_64')
@@ -18,9 +18,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://www.kernel.org/pub/linux/kernel/v4.x/patch-${pkgver}.xz"
 	config
 	extra_config)
-sha256sums=('SKIP'
+sha256sums=('9faa1dd896eaea961dc6e886697c0b3301277102e5bc976b2758f9a62d3ccd13'
             'SKIP'
-            '7a0a2c3f46da6f864cf1b1b5f074fe08ead8bb6bb7e0a5615269c3b9e0c2f552'
+            'SKIP'
             'SKIP')
 
 prepare() {
