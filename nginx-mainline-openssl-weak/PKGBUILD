@@ -5,13 +5,13 @@
 # Contributor: Drew DeVault
 
 pkgname=nginx-mainline-openssl-weak
-pkgver=1.13.12+openssl_1.1.0h
+pkgver=1.15.3+openssl_1.1.1
 pkgrel=1
 pkgdesc='Lightweight HTTP server and IMAP/POP3 proxy server, mainline release, with weak openssl ciphers enabled for IE8'
 arch=(x86_64)
 _basename=nginx
-_nginx_ver=1.13.12
-_openssl_ver="1.1.0h"
+_nginx_ver=1.15.3
+_openssl_ver="1.1.1"
 url='https://nginx.org'
 license=(custom)
 depends=(pcre zlib openssl geoip mailcap)
@@ -40,6 +40,7 @@ md5sums=('SKIP'
 
 _common_flags=(
   --with-compat
+  --with-debug
   --with-file-aio
   --with-http_addition_module
   --with-http_auth_request_module
@@ -73,7 +74,7 @@ _mainline_flags=(
 
 _openssl_flags=(
   --with-openssl="../openssl-$_openssl_ver"
-  --with-openssl-opt=enable-weak-ssl-ciphers
+  --with-openssl-opt="enable-tls1_3 enable-weak-ssl-ciphers"
 )
 
 pkgver() {
@@ -99,9 +100,9 @@ build() {
     --http-uwsgi-temp-path=/var/lib/nginx/uwsgi \
     --with-cc-opt="$CFLAGS $CPPFLAGS" \
     --with-ld-opt="$LDFLAGS" \
-    ${_common_flags[@]} \
-    ${_mainline_flags[@]} \
-    ${_openssl_flags[@]}
+    "${_common_flags[@]}" \
+    "${_mainline_flags[@]}" \
+    "${_openssl_flags[@]}"
 
   make
 }
