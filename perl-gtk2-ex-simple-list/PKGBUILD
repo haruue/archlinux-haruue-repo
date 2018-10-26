@@ -3,7 +3,7 @@
 
 pkgname='perl-gtk2-ex-simple-list'
 pkgver='0.50'
-pkgrel='3'
+pkgrel='4'
 pkgdesc="A simple interface to Gtk2's complex MVC list widget"
 arch=('any')
 license=('PerlArtistic' 'GPL')
