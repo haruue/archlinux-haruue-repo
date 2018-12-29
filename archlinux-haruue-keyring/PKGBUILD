@@ -2,13 +2,13 @@
 # This package is as a auto keyring renew tool for archlinux-haruue
 
 pkgname='archlinux-haruue-keyring'
-pkgver=20181120
+pkgver=20181229
 pkgrel=1
 pkgdesc="Haruue's Arch Linux Unoffical Repo PGP keyring"
 arch=('any')
 url='https://cdn.caoyue.com.cn/archlinux-haruue/README.txt'
 license=('GPL')
-depends=('')
+depends=()
 install="$pkgname.install"
 source=(
 	"${pkgname%-keyring}-revoked"
